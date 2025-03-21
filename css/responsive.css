@@ -1,0 +1,188 @@
+/* Responsive Styles */
+
+/* Large Screens */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Medium Screens */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+    /* Hide top contact bar on mobile */
+    .top-contact-bar {
+        display: none;
+    }
+
+    /* Adjust navbar position since contact bar is hidden */
+    .navbar {
+        top: 0;
+        height: 70px; /* Slightly smaller height for mobile */
+        background-color: var(--secondary-color); /* Solid navy blue */
+    }
+
+    /* Adjust hero carousel margin and height */
+    .hero-carousel {
+        margin-top: 70px; /* Set margin-top to the height of the navbar */
+        height: 400px; /* Reduced height for mobile */
+    }
+
+    /* Mobile Navigation */
+    .nav-links {
+        position: fixed;
+        top: 70px; /* Height of mobile navbar */
+        left: -100%;
+        width: 100%;
+        height: 60vh; /* Cover half the page vertically */
+        background-color: var(--secondary-color);
+        transition: 0.3s;
+        padding: 20px 0;
+        z-index: 999; /* Ensure it appears above other content */
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links ul li {
+        margin: 15px 0;
+    }
+
+    /* Add contact info to mobile menu */
+    .mobile-contact-info {
+        display: block;
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 20px;
+    }
+
+    .mobile-contact-info a {
+        display: block;
+        color: var(--light-color);
+        margin: 10px 0;
+        font-size: 0.9rem;
+    }
+
+    .mobile-social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* Show hamburger menu */
+    .hamburger {
+        display: block;
+    }
+
+    /* Adjust carousel text for mobile */
+    .slide-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .approach-cards, 
+    .client-logos {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
+
+    .contact-content {
+        flex-direction: column; /* Stack form and image vertically */
+        align-items: center; /* Center align items */
+        padding: 20px 0; /* Add padding for spacing */
+    }
+
+    .contact-form {
+        width: 100%; /* Full width on mobile */
+        margin-right: 0; /* Remove right margin */
+        padding: 0 15px; /* Add padding for better spacing */
+    }
+
+    .contact-image {
+        width: 100%; /* Full width on mobile */
+        display: flex;
+        justify-content: center; /* Center the image */
+        margin: 20px 0; /* Add margin for spacing */
+    }
+
+    .contact-img {
+        max-width: 100%; /* Ensure image is responsive */
+        height: auto; /* Maintain aspect ratio */
+        margin-left: -20px;
+    }
+
+    .mobile-social-links {
+        margin-top: 20px; /* Add margin for spacing */
+        padding: 20px 0; /* Add padding for better spacing */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-social-links .social-icons {
+        display: flex;
+        justify-content: center; /* Center the icons */
+        gap: 15px; /* Space between icons */
+    }
+
+    .mobile-contact-info {
+        display: flex;
+        justify-content: center; /* Center the contact icons */
+        gap: 15px; /* Space between icons */
+        margin-top: 20px; /* Add margin for spacing */
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+} 
