@@ -20,26 +20,66 @@ document.addEventListener('DOMContentLoaded', function() {
         once: true
     });
 
-    // Mobile Navigation Toggle
+    // Mobile Navigation - Complete Fix
+    console.log("DOM loaded - initializing mobile menu");
+    
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
+    
+    if (hamburger && navLinks) {
+        console.log("Found hamburger and navLinks elements");
+        
+        // Clear any existing event listeners
+        const newHamburger = hamburger.cloneNode(true);
+        hamburger.parentNode.replaceChild(newHamburger, hamburger);
+        
+        // Add new event listener
+        newHamburger.addEventListener('click', function(e) {
+            console.log("Hamburger clicked");
+            e.preventDefault();
+            e.stopPropagation();
+            this.classList.toggle('active');
             navLinks.classList.toggle('active');
+            console.log("Nav menu toggled:", navLinks.classList.contains('active'));
         });
-
+        
         // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+        document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !newHamburger.contains(e.target)) {
                 navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+                newHamburger.classList.remove('active');
             }
         });
+        
+        // Add close button to mobile menu
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '&times;';
+        closeButton.className = 'mobile-menu-close';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '10px';
+        closeButton.style.background = 'none';
+        closeButton.style.border = 'none';
+        closeButton.style.color = 'white';
+        closeButton.style.fontSize = '24px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.zIndex = '1003';
+        
+        navLinks.prepend(closeButton);
+        
+        closeButton.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            newHamburger.classList.remove('active');
+        });
+    } else {
+        console.error("Hamburger or navLinks elements not found!");
+        // Log all elements with IDs to help debug
+        console.log("All elements with IDs:", document.querySelectorAll('[id]'));
     }
 
-    // Back to Top Button
+    // Back to Top Button - Enhanced for Mobile
     const backToTopButton = document.getElementById('backToTop');
     
     if (backToTopButton) {
@@ -48,73 +88,27 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             backToTopButton.classList.remove('show');
         }
+    }
+});
 
-        backToTopButton.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', function() {
+            // Smooth scroll to top
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
+        
+        // Check initial scroll position
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        }
     }
 });
-
-// React Components
-// Testimonial Slider Component
-const testimonials = [
-    {
-        id: 1,
-        content: "BlossomWorks transformed our operations and helped us achieve a 30% increase in efficiency within just three months.",
-        author: "Jane Smith",
-        position: "CEO, Example Company"
-    },
-    {
-        id: 2,
-        content: "The strategic insights provided by BlossomWorks were invaluable to our business growth. Their team is professional and delivers results.",
-        author: "John Doe",
-        position: "Director, Global Enterprises"
-    },
-    {
-        id: 3,
-        content: "Working with BlossomWorks has been a game-changer for our organization. Their training programs are exceptional.",
-        author: "Sarah Johnson",
-        position: "HR Manager, Tech Solutions"
-    }
-];
-
-// Testimonial Component
-function TestimonialSlider() {
-    const [currentIndex, setCurrentIndex] = React.useState(0);
-
-    React.useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => 
-                prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return React.createElement(
-        'div',
-        { className: 'testimonial-slider' },
-        React.createElement(
-            'div',
-            { className: 'testimonial' },
-            React.createElement(
-                'div',
-                { className: 'testimonial-content' },
-                React.createElement('p', {}, `"${testimonials[currentIndex].content}"`)
-            ),
-            React.createElement(
-                'div',
-                { className: 'testimonial-author' },
-                React.createElement('h4', {}, testimonials[currentIndex].author),
-                React.createElement('p', {}, testimonials[currentIndex].position)
-            )
-        )
-    );
-}
 
 // Render the React component
 const testimonialContainer = document.getElementById('testimonialSlider');
@@ -132,9 +126,12 @@ const carousel = {
     interval: null,
 
     init() {
-        this.startAutoPlay();
-        this.addEventListeners();
-        this.goToSlide(this.currentSlide); // Set initial slide
+        // Only initialize if there are slides
+        if (this.slides.length > 0) {
+            this.startAutoPlay();
+            this.addEventListeners();
+            this.goToSlide(this.currentSlide); // Set initial slide
+        }
     },
 
     goToSlide(index) {
@@ -175,17 +172,25 @@ const carousel = {
     },
 
     addEventListeners() {
-        document.querySelector('.prev-btn').addEventListener('click', () => {
-            this.stopAutoPlay();
-            this.prevSlide();
-            this.startAutoPlay();
-        });
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        // Only add event listeners if the buttons exist
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                this.stopAutoPlay();
+                this.prevSlide();
+                this.startAutoPlay();
+            });
+        }
 
-        document.querySelector('.next-btn').addEventListener('click', () => {
-            this.stopAutoPlay();
-            this.nextSlide();
-            this.startAutoPlay();
-        });
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                this.stopAutoPlay();
+                this.nextSlide();
+                this.startAutoPlay();
+            });
+        }
     }
 };
 
@@ -233,4 +238,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
     }
+});
+
+// Course Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all buttons that open modals
+    const modalButtons = document.querySelectorAll('[data-toggle="modal"]');
+    
+    // Add click event to each button
+    modalButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetModal = document.querySelector(this.getAttribute('data-target'));
+            if (targetModal) {
+                targetModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+            }
+        });
+    });
+    
+    // Get all close buttons
+    const closeButtons = document.querySelectorAll('.close-modal');
+    
+    // Add click event to close buttons
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+    });
+    
+    // Close modal when clicking outside of modal content
+    window.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
 }); 
