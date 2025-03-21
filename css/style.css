@@ -335,15 +335,15 @@ a:hover {
 }
 
 .carousel-slide:nth-child(1) {
-    background-image: url('../images/hero1.avif');
+    background-image: url('../images/hero1.jpg');
 }
 
 .carousel-slide:nth-child(2) {
-    background-image: url('../images/hero2.avif');
+    background-image: url('../images/hero2.jpg');
 }
 
 .carousel-slide:nth-child(3) {
-    background-image: url('../images/hero3.avif');
+    background-image: url('../images/hero3.jpg');
 }
 
 /* Ensure content stays above overlay */
@@ -1853,5 +1853,59 @@ footer {
     .course-preview-card {
         width: 100%;
         max-width: 400px;
+    }
+}
+
+/* Mission Statement Section */
+.mission-statement {
+    padding: 80px 0;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.mission-statement .statement-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission-statement h2 {
+    color: var(--light-color);
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.mission-statement h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.mission-statement p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+    .mission-statement {
+        padding: 60px 0;
+    }
+    
+    .mission-statement h2 {
+        font-size: 1.8rem;
+    }
+    
+    .mission-statement p {
+        font-size: 1.1rem;
+        line-height: 1.6;
     }
 } 

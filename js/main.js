@@ -278,4 +278,12 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = ''; // Restore scrolling
         }
     });
+});
+
+// Auto update copyright year
+document.addEventListener('DOMContentLoaded', function() {
+    const copyrightYear = document.getElementById('copyright-year');
+    if (copyrightYear) {
+        copyrightYear.textContent = new Date().getFullYear();
+    }
 }); 
