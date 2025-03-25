@@ -18,21 +18,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-    <!-- Top Contact Bar -->
-    <div class="top-contact-bar">
-        <div class="container">
-            <div class="contact-info">
-                <a href="tel:+254710358755"><i class="fas fa-phone"></i> +254 710 358755</a>
-                <a href="mailto:info@blossomworks.com"><i class="fas fa-envelope"></i> info@blossomworks.com</a>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -131,7 +116,7 @@
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 123 Business Avenue, City</p>
-                    <p><i class="fas fa-phone"></i> +254 710 358755</p>
+                    <p><i class="fas fa-phone"></i> +254736 487062</p>
                     <p><i class="fas fa-envelope"></i> info@blossomworks.com</p>
                 </div>
             </div>
@@ -151,5 +136,36 @@
     
     <!-- Custom JS -->
     <script src="js/main.js"></script>
+
+    <!-- Add this right before the closing </body> tag in contact.html -->
+    <script>
+        // Immediate execution for mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (hamburger && navLinks) {
+                hamburger.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    console.log("Hamburger clicked, menu toggled");
+                };
+                
+                // Close menu when clicking outside
+                document.onclick = function(e) {
+                    if (navLinks.classList.contains('active') && 
+                        !navLinks.contains(e.target) && 
+                        !hamburger.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                };
+            } else {
+                console.error("Hamburger or navLinks elements not found on contact page!");
+            }
+        });
+    </script>
 </body>
 </html> 

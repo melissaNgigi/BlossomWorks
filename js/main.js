@@ -2,13 +2,16 @@
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     const contactBar = document.querySelector('.top-contact-bar');
+    const floatingContacts = document.getElementById('floatingContacts');
     
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
-        contactBar.classList.add('scrolled');
+        contactBar.classList.add('hidden');
+        floatingContacts.classList.add('show');
     } else {
         navbar.classList.remove('scrolled');
-        contactBar.classList.remove('scrolled');
+        contactBar.classList.remove('hidden');
+        floatingContacts.classList.remove('show');
     }
 });
 
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         once: true
     });
 
-    // Mobile Navigation - Complete Fix
+    // Mobile Navigation - Fixed version for all pages
     console.log("DOM loaded - initializing mobile menu");
     
     const hamburger = document.getElementById('hamburger');
@@ -29,12 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hamburger && navLinks) {
         console.log("Found hamburger and navLinks elements");
         
-        // Clear any existing event listeners
-        const newHamburger = hamburger.cloneNode(true);
-        hamburger.parentNode.replaceChild(newHamburger, hamburger);
-        
-        // Add new event listener
-        newHamburger.addEventListener('click', function(e) {
+        hamburger.addEventListener('click', function(e) {
             console.log("Hamburger clicked");
             e.preventDefault();
             e.stopPropagation();
@@ -47,31 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('click', function(e) {
             if (navLinks.classList.contains('active') && 
                 !navLinks.contains(e.target) && 
-                !newHamburger.contains(e.target)) {
+                !hamburger.contains(e.target)) {
                 navLinks.classList.remove('active');
-                newHamburger.classList.remove('active');
+                hamburger.classList.remove('active');
             }
-        });
-        
-        // Add close button to mobile menu
-        const closeButton = document.createElement('button');
-        closeButton.innerHTML = '&times;';
-        closeButton.className = 'mobile-menu-close';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '10px';
-        closeButton.style.right = '10px';
-        closeButton.style.background = 'none';
-        closeButton.style.border = 'none';
-        closeButton.style.color = 'white';
-        closeButton.style.fontSize = '24px';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.zIndex = '1003';
-        
-        navLinks.prepend(closeButton);
-        
-        closeButton.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            newHamburger.classList.remove('active');
         });
     } else {
         console.error("Hamburger or navLinks elements not found!");
