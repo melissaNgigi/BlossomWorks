@@ -834,48 +834,79 @@ footer {
 
 /* About Section */
 .about-section {
-    background-color: var(--light-color);
-    padding: 50px 0;
-    text-align: left;
-    margin-bottom: 0;
-    height: 700px;
-}
-
-.about-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--secondary-color);
+    position: relative; /* Position relative for absolute positioning of text */
+    padding: 50px 0; /* Add padding for spacing */
+    height: 800px;
 }
 
 .about-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 100px;
-    margin-top: 80px;
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    position: relative; /* Position relative for child elements */
+    margin-top: 70px;
 }
 
 .about-image {
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px;
+    flex: 1; /* Allow the image to take up space */
+    position: relative; /* Position relative for the image */
+}
+
+.about-image img {
+    width: 50%; /* Make the image smaller */
+    border-radius: 10px; /* Optional: Add border radius */
 }
 
 .about-text {
-    flex: 1;
-    text-align: left;
+    position: absolute; /* Position absolute to overlap the image */
+    top: 70%; /* Adjust as needed */
+    left: 40%; /* Adjust as needed */
+    background-color: rgba(255, 255, 255);
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    z-index: 10; /* Ensure it appears above the image */
+    width: 70%; /* Make the text card larger */
+    height: 300px;
 }
 
 .about-text h2 {
-    margin-bottom: 20px;
-    color: var(--secondary-color);
-    text-align: left;
+    color: var(--secondary-color); /* Heading color */
+    margin-bottom: 10px; /* Space below the heading */
+    position: relative; /* Position relative for the pseudo-element */
+}
+
+.about-text h2::after {
+    content: ''; /* Create an empty content for the line */
+    display: block; /* Make it a block element */
+    width: 50px; /* Set the width of the line */
+    height: 3px; /* Set the height of the line */
+    background-color: var(--primary-color); /* Use the primary color */
+    margin-top: 10px; /* Space between the heading and the line */
+    left: 0; /* Align to the left */
 }
 
 .about-text p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--dark-color);
-    text-align: left;
+    color: var(--dark-color); /* Text color */
+    font-size: 16px; /* Adjust font size */
+    line-height: 1.5; /* Line height for readability */
+}
+
+.learn-more {
+    display: inline-flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    color: var(--secondary-color); /* Use primary color for the text */
+    font-weight: bold; /* Make the text bold */
+    margin-top: 15px; /* Space above the link */
+}
+
+.learn-more i {
+    margin-left: 5px; /* Space between text and icon */
+    transition: transform 0.3s ease; /* Add transition for hover effect */
+    color: var(--primary-color);
+}
+
+.learn-more:hover i {
+    transform: translateX(5px); /* Move the arrow slightly on hover */
 }
 
 /* Services Overview */
@@ -1212,7 +1243,9 @@ footer {
     }
 
     .about-text {
-        width: 100%;
+        top: 10%; /* Adjust for smaller screens */
+        left: 5%; /* Adjust for smaller screens */
+        width: 90%; /* Make it wider on smaller screens */
     }
 
     .about-text h2 {
@@ -1221,6 +1254,10 @@ footer {
 
     .about-text p {
         font-size: 1.1rem;
+    }
+
+    .about-image img {
+        width: 50%; /* Adjust image size for smaller screens */
     }
 }
 
@@ -2215,4 +2252,46 @@ footer {
     .training-details {
         padding-left: 0;
     }
+}
+
+.approach-section {
+    position: relative; /* Position relative for child elements */
+    padding: 80px 0; /* Add padding for spacing */
+    text-align: center; /* Center text */
+}
+
+.approach-content {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out the cards */
+    position: relative; /* Position relative for child elements */
+}
+
+.approach-card {
+    width: 40%; /* Set width for cards */
+    padding: 20px; /* Add padding */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.line {
+    flex: 1; /* Allow the line to take up space */
+    height: 2px; /* Set line height */
+    background-color: var(--primary-color); /* Use primary color for the line */
+    position: relative; /* Position relative for the asterisk */
+}
+
+.rotating-element {
+    position: absolute; /* Fixed position to stay in view */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    pointer-events: none; /* Allow interactions with underlying elements */
+}
+
+.asterisk {
+    font-size: 50px; /* Adjust size as needed */
+    color: var(--primary-color); /* Use brand color */
+    transition: transform 0.1s ease; /* Smooth transition for rotation */
 } 

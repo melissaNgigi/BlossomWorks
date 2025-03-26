@@ -263,4 +263,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (copyrightYear) {
         copyrightYear.textContent = new Date().getFullYear();
     }
+});
+
+document.addEventListener('scroll', function() {
+    const asterisk = document.querySelector('.asterisk');
+    const scrollPosition = window.scrollY; // Get the current scroll position
+    const rotation = scrollPosition * 0.5; // Adjust the multiplier for speed
+    asterisk.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`; // Apply rotation
 }); 

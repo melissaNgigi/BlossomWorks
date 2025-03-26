@@ -36,27 +36,12 @@
                 </ul>
                 <!-- Mobile Social Links and Contact Info -->
                 <div class="mobile-social-links">
-                    <div class="floating-contacts" id="floatingContacts">
-                        <a href="tel:+254736487062">
-                            <i class="fas fa-phone"></i>
-                            <span class="tooltip">+254736487062</span>
-                        </a>
-                        <a href="mailto:info@blossomworks.com">
-                            <i class="fas fa-envelope"></i>
-                            <span class="tooltip">Email Us</span>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-facebook"></i>
-                            <span class="tooltip">Facebook</span>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-twitter"></i>
-                            <span class="tooltip">Twitter</span>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-linkedin"></i>
-                            <span class="tooltip">LinkedIn</span>
-                        </a>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="tel:+254710358755"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:info@blossomworks.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -151,36 +136,5 @@
     
     <!-- Custom JS -->
     <script src="js/main.js"></script>
-
-    <!-- Add this right before the closing </body> tag in contact.html -->
-    <script>
-        // Immediate execution for mobile menu
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-            
-            if (hamburger && navLinks) {
-                hamburger.onclick = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                    console.log("Hamburger clicked, menu toggled");
-                };
-                
-                // Close menu when clicking outside
-                document.onclick = function(e) {
-                    if (navLinks.classList.contains('active') && 
-                        !navLinks.contains(e.target) && 
-                        !hamburger.contains(e.target)) {
-                        navLinks.classList.remove('active');
-                        hamburger.classList.remove('active');
-                    }
-                };
-            } else {
-                console.error("Hamburger or navLinks elements not found on contact page!");
-            }
-        });
-    </script>
 </body>
 </html> 
