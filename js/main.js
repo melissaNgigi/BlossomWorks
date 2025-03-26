@@ -265,9 +265,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.addEventListener('scroll', function() {
-    const asterisk = document.querySelector('.asterisk');
-    const scrollPosition = window.scrollY; // Get the current scroll position
-    const rotation = scrollPosition * 0.5; // Adjust the multiplier for speed
-    asterisk.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`; // Apply rotation
+document.addEventListener("scroll", function () {
+    let asterisk = document.querySelector(".asterisk");
+    let scrollPosition = window.scrollY;
+
+    // Rotate based on scroll position
+    asterisk.style.transform = `translate(-50%, -100%) rotate(${scrollPosition}deg)`;
 }); 

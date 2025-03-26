@@ -1046,52 +1046,37 @@ footer {
     z-index: 2;
 }
 
-.card {
-    background-color: var(--light-color);
+.approach-card {
+    padding: 20px;
     border-radius: 10px;
-    padding: 30px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-    position: relative;
-    z-index: 3;
-    border-bottom: 4px solid var(--primary-color);
+    max-width: 500px;
+    transition: transform 0.3s ease; /* Add transition for hover effect */
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+.approach-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-/* Animation for cards */
-.card[data-aos] {
-    opacity: 1;
-    animation: fadeInUp 0.5s forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.line {
+    width: 2px;
+    height: 100%; /* Adjust height to fill the section */
+    background-color: #000435; /* Navy blue from your color palette */
+    margin: 0 20px; /* Add margin to space it from the cards */
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    color: var(--light-color);
-    margin-bottom: 20px;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    padding: 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 30px;
+    color: #e48489; /* Adjust based on your theme */
+    margin-bottom: 10px;
+}
+
+.left {
+    justify-self: end;
+}
+
+.right {
+    justify-self: start;
 }
 
 /* Services Section */
@@ -1274,7 +1259,7 @@ footer {
 /* Training Areas Section - Simple List Style */
 .training-areas {
     padding: 50px 0;
-    background-color: var(--light-accent);
+    background-color: var(--light-color);
 }
 
 .training-list {
@@ -1308,7 +1293,7 @@ footer {
 }
 
 .training-details h3 {
-    color: var(--accent-color);
+    color: var(--secondary-color);
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
@@ -2252,46 +2237,80 @@ footer {
     .training-details {
         padding-left: 0;
     }
-}
+} 
 
 .approach-section {
-    position: relative; /* Position relative for child elements */
-    padding: 80px 0; /* Add padding for spacing */
-    text-align: center; /* Center text */
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: var(--light-accent);
+    min-height: 100vh; /* Ensure minimum height */
 }
 
-.approach-content {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space out the cards */
-    position: relative; /* Position relative for child elements */
+.approach-container {
+    max-width: 900px;
+    position: relative; /* Add this for absolute line positioning */
+    display: grid;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Add this new style for a continuous line */
+.approach-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #000435;
+    z-index: 1;
 }
 
 .approach-card {
-    width: 40%; /* Set width for cards */
-    padding: 20px; /* Add padding */
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    position: relative; /* Add this for z-index to work */
+    z-index: 2; /* Place cards above the line */
+    background: var(--light-color);
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.1);
 }
 
-.line {
-    flex: 1; /* Allow the line to take up space */
-    height: 2px; /* Set line height */
-    background-color: var(--primary-color); /* Use primary color for the line */
-    position: relative; /* Position relative for the asterisk */
+.approach-card.left {
+    margin-right: 700px;
 }
 
-.rotating-element {
-    position: absolute; /* Fixed position to stay in view */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for centering */
-    pointer-events: none; /* Allow interactions with underlying elements */
+.approach-card.right {
+    margin-left: 700px;
+}
+
+.card-icon {
+    font-size: 30px;
+    color: #e48489; /* Adjust based on your theme */
+    margin-bottom: 10px;
+}
+
+.left {
+    justify-self: end;
+}
+
+.right {
+    justify-self: start;
 }
 
 .asterisk {
-    font-size: 50px; /* Adjust size as needed */
-    color: var(--primary-color); /* Use brand color */
-    transition: transform 0.1s ease; /* Smooth transition for rotation */
-} 
+    position: absolute;
+    left: 50%;  /* Align with the vertical line */
+    transform: translate(-50%, 0); /* Start at the top of the line */
+    top: 0;  /* Start position */
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+    z-index: 2; /* Place above the line but below the cards */
+    opacity: 0.8; /* Slight transparency */
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+
