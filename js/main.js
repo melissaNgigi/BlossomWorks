@@ -266,9 +266,36 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener("scroll", function () {
+    // Make sure the elements exist before trying to manipulate them
     let asterisk = document.querySelector(".asterisk");
-    let scrollPosition = window.scrollY;
-
-    // Rotate based on scroll position
-    asterisk.style.transform = `translate(-50%, -100%) rotate(${scrollPosition}deg)`;
+    let approachSection = document.querySelector(".approach-section");
+    
+    if (!asterisk || !approachSection) {
+        console.log("Asterisk or approach section not found");
+        return;
+    }
+    
+    // Log for debugging
+    console.log("Scrolling, found elements");
+    
+    // Get the section's position relative to the viewport
+    let sectionRect = approachSection.getBoundingClientRect();
+    
+    // Calculate a position value between 0-100% based on the section's position
+    let progress = 0;
+    
+    // Only calculate progress when the section is visible
+    if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
+        // Calculate how far through the section we've scrolled (0-100%)
+        progress = Math.max(0, Math.min(100, 
+            (1 - (sectionRect.top / window.innerHeight)) * 100
+        ));
+        console.log("Progress:", progress);
+    }
+    
+    // Apply the transform - use a fixed pixel amount for testing
+    asterisk.style.transform = `translate(-50%, ${progress}px) rotate(${progress * 2}deg)`;
+    
+    // Log the current transform
+    console.log("Transform:", asterisk.style.transform);
 }); 

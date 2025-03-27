@@ -496,10 +496,11 @@ a:hover {
 /* Clientele Section */
 .clientele {
     padding: 50px 0; /* Keep padding for spacing */
-    background-color: var(--neutral-gray);
+    background-color: var(--neutral-gray); /* Light gray background */
     color: var(--dark-color);
     margin-top: 40px; /* Space above the section */
     min-height: 400px; /* Set a minimum height */
+    text-align: center; /* Center text */
 }
 
 .section-header {
@@ -507,18 +508,9 @@ a:hover {
     margin-bottom: 30px;
 }
 
-.header-with-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.section-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    color: var(--primary-color); /* Icon color */
+.section-header h2 {
+    color: var(--secondary-color); /* Heading color */
+    font-size: 2.5rem; /* Adjust heading size */
 }
 
 .clientele-logos {
@@ -2303,14 +2295,197 @@ footer {
 
 .asterisk {
     position: absolute;
-    left: 50%;  /* Align with the vertical line */
-    transform: translate(-50%, 0); /* Start at the top of the line */
-    top: 0;  /* Start position */
-    width: 40px; /* Adjust size as needed */
+    left: 50%;
+    top: 0;
+    width: 40px;
     height: auto;
-    z-index: 2; /* Place above the line but below the cards */
-    opacity: 0.8; /* Slight transparency */
-    transition: transform 0.1s ease-out; /* Smooth movement */
+    z-index: 10; /* Increase z-index to ensure visibility */
+    opacity: 1; /* Full opacity for testing */
+    transition: transform 0.1s ease-out;
+    pointer-events: none; /* Make sure it doesn't interfere with clicks */
+}
+
+/* Make sure the container allows for absolute positioning */
+.approach-container {
+    position: relative;
+    min-height: 400px; /* Ensure there's space for the asterisk to move */
+}
+
+/* Professional Training Programs Section */
+.training-programs-section {
+    padding: 80px 24px;
+    background: var(--light-color);
+    margin-top: 200px;
+}
+
+.training-programs-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.training-programs-content {
+    display: flex;
+    gap: 100px;
+    width: 100%;
+}
+
+.training-programs-text {
+    flex: 0 0 500px;
+    text-align: left;
+    padding-right: 48px;
+    width: 700px;
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+}
+
+.training-programs-text img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.training-programs-text h2 {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--secondary-color);
+}
+
+.training-programs-text p {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+}
+
+.training-programs-text .btn-primary {
+    display: inline-block;
+    margin-top: 20px;
+}
+.training-programs-text .btn-primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.training-programs-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 48px;
+    margin-left: 150px;
+    margin-top: 90px;
+    position: relative; /* For positioning the separators */
+}
+
+/* Style for the separator line */
+.training-programs-card:not(:last-child) {
+    position: relative;
+    padding-bottom: 32px; /* Add space for the separator */
+}
+
+.training-programs-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+    opacity: 0.7;
+}
+
+/* Optional: Add a small decorative element at the center of each separator */
+.training-programs-card:not(:last-child)::before {
+    content: '•';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: var(--primary-color);
+    background-color: var(--light-color);
+    padding: 0 10px;
+    z-index: 1;
+}
+
+.training-programs-card {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: -100px;
+    margin-top: -40px;
+}
+
+.training-programs-card img {
+    width: 230px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the area */
+    margin-right: 30px; /* Space between image and text */
+    border-radius: 10px;
+}
+
+.training-programs-text-content {
+    flex: 1; /* Allow text content to take the remaining space */
+    width: 300px;
+    margin-top: 40px;
+}
+
+.training-programs-card h3 {
+    font-size: 22px;
+    color: var(--secondary-color);
+    margin-bottom: 12px;
+}
+
+.training-programs-card p {
+    font-size: 16px;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+}
+
+.training-programs-card a {
+    margin-top: 20px;
+}
+
+.training-programs-card i {
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .training-programs-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .training-programs-text {
+        position: static;
+        width: 100%;
+        padding-right: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .training-programs-cards {
+        align-items: center;
+    }
+    
+    .training-programs-card {
+        width: 100%;
+    }
+}
+
+/* Add styling for the image in the training programs text section */
+.training-programs-text img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 
