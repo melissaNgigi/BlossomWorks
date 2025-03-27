@@ -265,37 +265,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.addEventListener("scroll", function () {
-    // Make sure the elements exist before trying to manipulate them
-    let asterisk = document.querySelector(".asterisk");
-    let approachSection = document.querySelector(".approach-section");
-    
-    if (!asterisk || !approachSection) {
-        console.log("Asterisk or approach section not found");
-        return;
-    }
-    
-    // Log for debugging
-    console.log("Scrolling, found elements");
-    
-    // Get the section's position relative to the viewport
-    let sectionRect = approachSection.getBoundingClientRect();
-    
-    // Calculate a position value between 0-100% based on the section's position
-    let progress = 0;
-    
-    // Only calculate progress when the section is visible
-    if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
-        // Calculate how far through the section we've scrolled (0-100%)
-        progress = Math.max(0, Math.min(100, 
-            (1 - (sectionRect.top / window.innerHeight)) * 100
-        ));
-        console.log("Progress:", progress);
-    }
-    
-    // Apply the transform - use a fixed pixel amount for testing
-    asterisk.style.transform = `translate(-50%, ${progress}px) rotate(${progress * 2}deg)`;
-    
-    // Log the current transform
-    console.log("Transform:", asterisk.style.transform);
-}); 
+// Clean up and optimize the scroll handling
+document.addEventListener('DOMContentLoaded', function() {
+    const asterisk = document.querySelector('.asterisk');
+    const approachContainer = document.querySelector('.approach-container');
+    let lastScrollY = window.scrollY;
+    let ticking = false; // For requestAnimationFrame
+
+    window.addEventListener('scroll', function() {
+        if (!asterisk || !approachContainer) return;
+
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                const containerRect = approachContainer.getBoundingClientRect();
+                
+                // Only proceed if we're within the approach section
+                if (containerRect.top < window.innerHeight && containerRect.bottom > 0) {
+                    // Calculate scroll direction and amount
+                    const currentScrollY = window.scrollY;
+                    const scrollDiff = currentScrollY - lastScrollY;
+                    
+                    // Calculate vertical position (10% to 85%)
+                    const scrollProgress = Math.max(0, Math.min(1, 
+                        (window.innerHeight - containerRect.top) / (window.innerHeight + containerRect.height)
+                    ));
+                    const newPosition = 10 + (75 * scrollProgress);
+                    
+                    // Update rotation based on scroll direction
+                    const rotation = scrollDiff * 0.5;
+                    
+                    // Apply the transforms
+                    asterisk.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+                    asterisk.style.top = `${newPosition}%`;
+                    
+                    lastScrollY = currentScrollY;
+                }
+                
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+});

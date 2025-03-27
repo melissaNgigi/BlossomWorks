@@ -1018,57 +1018,69 @@ footer {
     }
 }
 
-/* New styles for the approach section */
+/* Adjusted approach section for better fit */
 .approach {
-    background-color: rgba(90, 112, 196, 0.05); /* Light version of accent color */
-    padding: 80px 0; /* Adjust padding as needed */
+    padding: 50px 0; /* Reduce padding */
 }
 
 .approach .section-header h2 {
-    color: var(--secondary-color); /* Set title color to blue */
+    font-size: 22px; /* Decrease heading size */
 }
 
+/* Grid layout for approach section */
 .approach-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: -50px;
-    margin-bottom: 50px;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: 1fr auto 1fr; /* Two equal columns + center vertical line */
+    align-items: center;
+    gap: 40px; /* Adjust spacing between elements */
+    margin-top: -30px;
+    margin-bottom: 30px;
 }
 
+/* Style for each approach card */
 .approach-card {
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 100%;
+    min-width: 500px; /* Wider minimum width */
     text-align: center;
-    max-width: 500px;
-    transition: transform 0.3s ease; /* Add transition for hover effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
 .approach-card:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.03); /* Subtle hover effect */
 }
 
+/* Style for the vertical line */
 .line {
-    width: 2px;
-    height: 100%; /* Adjust height to fill the section */
+    width: 1.5px;
+    height: 100%; /* Full height */
     background-color: #000435; /* Navy blue from your color palette */
-    margin: 0 20px; /* Add margin to space it from the cards */
+    justify-self: center; /* Keep the line in the middle */
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.card-icon {
-    font-size: 30px;
-    color: #e48489; /* Adjust based on your theme */
-    margin-bottom: 10px;
-}
-
+/* Positioning left and right cards */
 .left {
-    justify-self: end;
+    justify-self: end; /* Aligns to the right */
+    margin-right: 50px; /* Additional space from the line */
 }
 
 .right {
-    justify-self: start;
+    justify-self: start; /* Aligns to the left */
+    margin-left: 50px; /* Additional space from the line */
+}
+
+/* Adjust icon size */
+.card-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #e48489; /* Adjust based on your theme */
 }
 
 /* Services Section */
@@ -2015,12 +2027,15 @@ footer {
     padding: 80px 0;
     background-color: var(--light-accent);
     color: var(--dark-color);
+    margin-bottom: -130px;
+    margin-top: -100px;
 }
 
 .mission-statement .statement-content {
-    max-width: 900px;
+    width: 1000px;
     margin: 0 auto;
     text-align: center;
+    margin-top: -20px;
 }
 
 .mission-statement h2 {
@@ -2234,27 +2249,30 @@ footer {
 .approach-section {
     display: flex;
     justify-content: center;
-    padding: 50px 20px;
     background-color: var(--light-accent);
-    min-height: 100vh; /* Ensure minimum height */
+    min-height: 80vh; /* Reduce from 100vh */
+    overflow: hidden;
+    padding-bottom: 0; /* Remove bottom padding */
 }
 
 .approach-container {
-    max-width: 900px;
-    position: relative; /* Add this for absolute line positioning */
+    max-width: 1400px;
+    position: relative;
     display: grid;
     gap: 20px;
     align-items: center;
+    padding-bottom: 0; /* Remove bottom padding */
+    margin-bottom: -50px; /* Add negative margin to pull up content below */
 }
 
-/* Add this new style for a continuous line */
+/* Adjust the line height */
 .approach-container::before {
     content: '';
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 0;
-    bottom: 0;
+    top: 10%;
+    bottom: 15%; /* Adjust bottom to match new container height */
     width: 2px;
     background-color: #000435;
     z-index: 1;
@@ -2265,32 +2283,27 @@ footer {
     border-radius: 10px;
     text-align: center;
     width: 300px;
-    position: relative; /* Add this for z-index to work */
-    z-index: 2; /* Place cards above the line */
+    position: relative;
+    z-index: 2;
     background: var(--light-color);
     box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.1);
+    height: 160px;
 }
 
 .approach-card.left {
-    margin-right: 700px;
+    margin-right: 700px; /* Reduced margin to prevent overlap */
+    margin-left: auto; /* Push card to the right */
 }
 
 .approach-card.right {
-    margin-left: 700px;
+    margin-left: 700px; /* Reduced margin to prevent overlap */
+    margin-right: auto; /* Push card to the left */
 }
 
 .card-icon {
     font-size: 30px;
-    color: #e48489; /* Adjust based on your theme */
+    color: #e48489;
     margin-bottom: 10px;
-}
-
-.left {
-    justify-self: end;
-}
-
-.right {
-    justify-self: start;
 }
 
 .asterisk {
@@ -2299,23 +2312,17 @@ footer {
     top: 0;
     width: 40px;
     height: auto;
-    z-index: 10; /* Increase z-index to ensure visibility */
-    opacity: 1; /* Full opacity for testing */
+    z-index: 10;
+    opacity: 1;
     transition: transform 0.1s ease-out;
-    pointer-events: none; /* Make sure it doesn't interfere with clicks */
-}
-
-/* Make sure the container allows for absolute positioning */
-.approach-container {
-    position: relative;
-    min-height: 400px; /* Ensure there's space for the asterisk to move */
+    pointer-events: none;
 }
 
 /* Professional Training Programs Section */
 .training-programs-section {
     padding: 80px 24px;
     background: var(--light-color);
-    margin-top: 200px;
+    margin-top: 100px; /* Reduce from 200px */
 }
 
 .training-programs-grid {
@@ -2351,7 +2358,7 @@ footer {
 }
 
 .training-programs-text h2 {
-    font-size: 32px;
+    font-size: 38px;
     line-height: 1.2;
     margin-bottom: 16px;
     color: var(--secondary-color);
@@ -2486,6 +2493,86 @@ footer {
 .training-programs-text img:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.course-content strong {
+    color: var(--primary-color); /* Change to your desired color */
+    font-weight: bold; /* Make it bold */
+}
+
+.training-programs-text strong {
+    color: var(--secondary-color); /* Change to your desired color */
+    font-weight: bold; /* Make it bold */
+}
+
+/* Vision Section */
+.vision-section {
+    position: relative;
+    margin-top: 40px; /* Space above the section */
+    height: 500px; /* Set a height for the section */
+    overflow: hidden; /* Ensure the overlay fits within the image */
+    
+}
+
+.vision-image {
+    background-image: url('../images/vision.jpg'); /* Set your background image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    height: 100%; /* Full height */
+    position: relative; /* Position relative for overlay */
+}
+
+.vision-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 4, 53, 0.7); 
+}
+
+.vision-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 20px; /* Add some padding */
+    display: flex; /* Use flexbox */
+    flex-direction: row; /* Arrange items side by side */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: -50px; /* Space between items */
+    border-bottom: 2px solid #fff; /* Add a pink border at the bottom */
+    padding-bottom: 80px; /* Add some space between text and border */
+}
+
+.vision-text h2 {
+    font-size: 3rem; /* Adjust heading size */
+    color: var(--light-color);
+    margin: 0; /* Remove margin to prevent stacking */
+    width: 700px; /* Set a specific width */
+    text-align: left; /* Align text to the left */
+    font-weight: 500;
+    position: relative; /*Position relative for the pseudo-element */
+}
+
+.vision-text h2::after {
+    content: ''; /* Create an empty content for the line */
+    display: block; /* Make it a block element */
+    width: 60px; /* Full width */
+    height: 4px; /* Height of the line */
+    background-color: #e48489; /* Pink color */
+    margin-top: 10px; /* Space between heading and line */
+}
+
+.vision-text p {
+    font-size: 1.5rem; /* Adjust paragraph size */
+    font-weight: 400;
+    margin: 0; /* Remove margin to prevent stacking */
+    text-align: left; /* Align text to the left */
+    width: 700px;
 }
 
 
