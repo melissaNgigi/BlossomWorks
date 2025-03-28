@@ -995,15 +995,15 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     color: var(--light-color);
     transition: all 0.3s ease;
 }
 
 /* Increase the icon size within the container */
 .floating-contacts a i {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /* Tooltip Styling */
