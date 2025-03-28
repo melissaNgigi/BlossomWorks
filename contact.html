@@ -16,6 +16,8 @@
     
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -66,7 +68,7 @@
     <section class="contact-section">
         <div class="contact-content">
             <!-- Contact Form Card -->
-            <div class="contact-card form-card" data-aos="fade-right" data-aos-duration="800">
+            <div class="contact-card form-card" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
                 <h2>Send us a Message</h2>
                 <form id="contactForm">
                     <div class="form-group">
@@ -86,7 +88,7 @@
             </div>
 
             <!-- Contact Info Card -->
-            <div class="contact-card info-card" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+            <div class="contact-card info-card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">
                 <h2>Get in Touch</h2>
                 <div class="contact-info-items">
                     <div class="info-item">
@@ -197,8 +199,17 @@
         // Initialize AOS
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
-                once: true // Whether animation should happen only once - while scrolling down
+                duration: 1000,
+                easing: 'ease-out-cubic',
+                delay: 100,
+                offset: 50,
+                once: true
             });
+            
+            // Force refresh AOS to make sure animations trigger
+            setTimeout(function() {
+                AOS.refresh();
+            }, 500);
         });
     </script>
 </body>

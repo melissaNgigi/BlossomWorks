@@ -1363,7 +1363,7 @@ footer {
     position: relative;
     padding: 80px 0;
     min-height: calc(100vh - 80px);
-    background: linear-gradient(to right, var(--light-color) 50%, var(--secondary-color) 50%);
+    background: linear-gradient(45deg, #000435, #e48489);
 }
 
 .contact-content {
@@ -3172,6 +3172,45 @@ footer {
 /* Add this to your existing CSS */
 body.no-scroll {
     overflow: hidden;
+}
+
+/* AOS animation enhancements for contact cards */
+[data-aos] {
+    pointer-events: none; /* Prevent flickering during animation */
+}
+
+[data-aos].aos-animate {
+    pointer-events: auto; /* Restore pointer events after animation */
+}
+
+/* Improve contact section appearance during animations */
+.contact-section {
+    overflow: hidden; /* Prevent horizontal scrollbar during animations */
+    perspective: 1000px; /* Add depth to animations */
+}
+
+/* Enhance form card animation */
+.form-card[data-aos="fade-right"] {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+
+.form-card[data-aos="fade-right"].aos-animate {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Enhance info card animation */
+.info-card[data-aos="fade-left"] {
+    transform: translateX(100px);
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+
+.info-card[data-aos="fade-left"].aos-animate {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 
