@@ -256,7 +256,7 @@ a:hover {
         display: block;
         width: 30px;
         height: 3px;
-        background-color: var(--light-color);
+        background-color: var(--secondary-color);
         margin: 6px 0;
         transition: 0.4s;
     }
@@ -1514,7 +1514,7 @@ footer {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background-color: var(--secondary-color);
+        background-color: var(--light-color);
         padding: 50px 20px;
         transition: 0.5s ease;
         display: flex;
@@ -1535,7 +1535,7 @@ footer {
         margin: 15px 0;
     }
     .nav-links ul li a {
-        color: var(--light-color);
+        color: var(--secondary-color);
     }
     /* Add styles for mobile social links */
     .mobile-social-links {
@@ -1554,14 +1554,12 @@ footer {
     }
 
     .mobile-social-links a {
-        color: var(--light-color);
+        color: var(--secondary-color);
         font-size: 1.5rem; /* Increase icon size for better visibility */
         transition: color 0.3s ease;
     }
 
-    .mobile-social-links a:hover {
-        color: var(--primary-color);
-    }
+    
 
     /* Mobile contact info styles */
     .mobile-contact-info {
@@ -2604,6 +2602,265 @@ footer {
     margin: 0; /* Remove margin to prevent stacking */
     text-align: left; /* Align text to the left */
     width: 700px;
+}
+
+/* Hero Section Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .slide-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Vision Section Responsive */
+@media (max-width: 992px) {
+    .vision-text {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        width: 90%;
+    }
+
+    .vision-text h2, 
+    .vision-text p {
+        width: 100%;
+        text-align: center;
+    }
+
+    .vision-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .vision-text h2::after {
+        margin: 10px auto;
+    }
+
+    .vision-text p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .vision-section {
+        height: auto;
+        min-height: 500px;
+    }
+
+    .vision-text h2 {
+        font-size: 2rem;
+    }
+
+    .vision-text p {
+        font-size: 1rem;
+    }
+}
+
+/* Mission & Vision Cards Responsive */
+@media (max-width: 1200px) {
+    .cards-container {
+        gap: 50px;
+    }
+
+    .vision-card, .mission-card {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 992px) {
+    .mission-vision-cards {
+        margin-top: -200px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .vision-card, .mission-card {
+        max-width: 90%;
+        width: 100%;
+    }
+}
+
+/* Training Programs Section Responsive */
+@media (max-width: 1200px) {
+    .training-programs-content {
+        gap: 50px;
+    }
+
+    .training-programs-text {
+        flex: 0 0 400px;
+    }
+
+    .training-programs-cards {
+        margin-left: 50px;
+    }
+}
+
+@media (max-width: 992px) {
+    .training-programs-content {
+        flex-direction: column;
+    }
+
+    .training-programs-text {
+        width: 100%;
+        padding-right: 0;
+        position: static;
+    }
+
+    .training-programs-cards {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    .training-programs-card {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .training-programs-section {
+        padding: 60px 20px;
+    }
+
+    .training-programs-text h2 {
+        font-size: 28px;
+    }
+
+    .training-programs-text p {
+        font-size: 16px;
+    }
+
+    .training-programs-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .training-programs-card img {
+        width: 100%;
+        max-width: 300px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .training-programs-text-content {
+        width: 100%;
+    }
+}
+
+/* Approach Section Responsive */
+@media (max-width: 1200px) {
+    .approach-card.left {
+        margin-right: 500px;
+    }
+
+    .approach-card.right {
+        margin-left: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    .approach-card.left {
+        margin-right: 300px;
+    }
+
+    .approach-card.right {
+        margin-left: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .approach-section {
+        min-height: auto;
+        padding: 40px 0;
+    }
+
+    .approach-container::before {
+        display: none; /* Hide vertical line on mobile */
+    }
+
+    .approach-card {
+        width: 90%;
+        margin: 0 auto !important;
+    }
+
+    .approach-card.left,
+    .approach-card.right {
+        margin: 20px auto !important;
+    }
+
+    .asterisk {
+        display: none; /* Hide asterisk on mobile */
+    }
+}
+
+/* Mission Statement Section Responsive */
+@media (max-width: 1200px) {
+    .mission-statement .statement-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-statement {
+        padding: 60px 20px;
+        margin-top: -50px;
+        margin-bottom: -80px;
+    }
+
+    .mission-statement h2 {
+        font-size: 1.8rem;
+    }
+
+    .mission-statement p {
+        font-size: 1rem;
+    }
+}
+
+/* Footer Responsive */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-logo {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    
+    .footer-logo h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-links h3::after, 
+    .footer-contact h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
 }
 
 

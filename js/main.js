@@ -269,42 +269,36 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const asterisk = document.querySelector('.asterisk');
     const approachContainer = document.querySelector('.approach-container');
+    let rotation = 0;
     let lastScrollY = window.scrollY;
-    let ticking = false; // For requestAnimationFrame
 
     window.addEventListener('scroll', function() {
         if (!asterisk || !approachContainer) return;
 
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                const containerRect = approachContainer.getBoundingClientRect();
-                
-                // Only proceed if we're within the approach section
-                if (containerRect.top < window.innerHeight && containerRect.bottom > 0) {
-                    // Calculate scroll direction and amount
-                    const currentScrollY = window.scrollY;
-                    const scrollDiff = currentScrollY - lastScrollY;
-                    
-                    // Calculate vertical position (10% to 85%)
-                    const scrollProgress = Math.max(0, Math.min(1, 
-                        (window.innerHeight - containerRect.top) / (window.innerHeight + containerRect.height)
-                    ));
-                    const newPosition = 10 + (75 * scrollProgress);
-                    
-                    // Update rotation based on scroll direction
-                    const rotation = scrollDiff * 0.5;
-                    
-                    // Apply the transforms
-                    asterisk.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
-                    asterisk.style.top = `${newPosition}%`;
-                    
-                    lastScrollY = currentScrollY;
-                }
-                
-                ticking = false;
-            });
-
-            ticking = true;
+        // Get the container's position relative to viewport
+        const containerRect = approachContainer.getBoundingClientRect();
+        
+        // Only proceed if we're within the approach section
+        if (containerRect.top < window.innerHeight && containerRect.bottom > 0) {
+            // Calculate scroll direction and amount
+            const currentScrollY = window.scrollY;
+            const scrollDiff = currentScrollY - lastScrollY;
+            
+            // Update rotation based on scroll direction
+            rotation += scrollDiff * 0.5; // Adjust this multiplier to control rotation speed
+            
+            // Calculate vertical position (10% to 85%)
+            const scrollProgress = Math.max(0, Math.min(1, 
+                (window.innerHeight - containerRect.top) / (window.innerHeight + containerRect.height)
+            ));
+            const newPosition = 10 + (75 * scrollProgress);
+            
+            // Apply the transforms
+            asterisk.style.top = `${newPosition}%`;
+            asterisk.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+            
+            // Update last scroll position
+            lastScrollY = currentScrollY;
         }
     });
 });

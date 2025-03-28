@@ -33,7 +33,7 @@
     .navbar {
         top: 0;
         height: 70px; /* Slightly smaller height for mobile */
-        background-color: var(--secondary-color); /* Solid navy blue */
+        background-color: var(--light-color); /* Solid navy blue */
     }
 
     /* Adjust hero carousel margin and height */
@@ -49,7 +49,7 @@
         left: -100%;
         width: 100%;
         height: 60vh; /* Cover half the page vertically */
-        background-color: var(--secondary-color);
+        background-color: var(--light-color);
         transition: 0.3s;
         padding: 20px 0;
         z-index: 999; /* Ensure it appears above other content */
