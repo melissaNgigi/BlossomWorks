@@ -958,52 +958,81 @@ footer {
 
 /* Floating Contact Icons */
 .floating-contacts {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static; /* Change from fixed to static */
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    flex-direction: row; /* Keep horizontal layout */
+    gap: 20px;
+    padding: 20px;
     z-index: 1002;
+    justify-content: center; /* Center the icons horizontally */
+    margin-top: 30px; /* Add space from content above */
 }
 
+.icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the icons */
 .floating-contacts a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--secondary-color); /* Background color */
-    color: var(--light-color); /* Icon color */
-    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+    border-radius: 0;
     transition: all 0.3s ease;
-    position: relative; /* Position relative for tooltip */
+    border: 1px solid var(--secondary-color);
 }
 
-.floating-contacts a:hover {
-    background-color: var(--accent-color); /* Change background on hover */
-    color: var(--light-color); /* Ensure icon color remains visible */
-}
-
-.tooltip {
-    display: none; /* Hide by default */
+/* Update tooltip positioning for static layout */
+.floating-contacts .tooltip {
     position: absolute;
-    bottom: 50px; /* Position above the icon */
-    right: 50%; /* Center it */
-    transform: translateX(50%);
-    background-color: var(--dark-color);
+    bottom: -40px; /* Position below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary-color);
     color: var(--light-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    white-space: nowrap; /* Prevent text wrapping */
-    z-index: 1003; /* Ensure it appears above other elements */
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-.floating-contacts a:hover .tooltip {
-    display: block; /* Show tooltip on hover */
+/* Update tooltip arrow for bottom position */
+.floating-contacts .tooltip::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent var(--secondary-color) transparent;
+}
+
+/* Show tooltip on hover */
+.icon-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hover effect for icons */
+.floating-contacts a:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    transform: scale(1.1);
+}
+
+/* Increase icon size */
+.floating-contacts a i {
+    font-size: 28px;
 }
 
 /* Mobile Navigation Styles */
