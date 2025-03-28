@@ -1090,7 +1090,7 @@ footer {
 }
 
 .approach-card p {
-    font-size: 18px;
+    font-size: 20px !important;
 }
 
 .approach-card:hover {
@@ -1360,52 +1360,185 @@ footer {
 
 /* Contact Section */
 .contact-section {
-    padding: 50px 0;
-    background-color: var(--light-color); /* Light background for contrast */
-    margin-top: 0; /* Remove margin since page-header provides spacing */
+    position: relative;
+    padding: 80px 0;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(to right, var(--light-color) 50%, var(--secondary-color) 50%);
 }
 
 .contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
-    justify-content: space-between; /* Align form and image side by side */
-    align-items: flex-start; /* Align items at the start */
+    gap: 0; /* Remove the gap to enable overlap */
+    align-items: flex-start;
+    position: relative;
+    margin-left: 600px;
 }
 
-.contact-form {
-    flex: 1; /* Allow form to take available space */
-    margin-right: 20px; /* Space between form and image */
-    margin-bottom: 30px; /* Add margin to the bottom for more space */
+/* Contact Cards Styling - REVERSED COLORS */
+.contact-card {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
-.contact-form h2 {
-    margin-bottom: 20px;
+/* Info card - White on blue side */
+.info-card {
+    flex: 0 0 60%;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25) !important;
+    position: relative;
+    z-index: 1;
+    margin-right: 100px;
+    padding-left: 300px; /* Add left padding to push content to the right */
+    margin-left: -80px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* Form card - Blue on white side */
+.form-card {
+    flex: 0 0 50%;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.25) !important;
+    position: relative;
+    z-index: 2;
+    margin-left: -10%;
+    margin-right: -150px;
+    top: 30px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+.form-card h2 {
+    color: var(--light-color);
 }
 
+.info-card h2 {
+    color: var(--secondary-color);
+}
+
+/* Form Styling - Updated for the color switch */
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--gray-color);
+    color: var(--light-color);
     border-radius: 5px;
+    font-size: 18px;
+    transition: all 0.3s ease;
 }
 
-.contact-image {
-    flex: 1; /* Allow image to take available space */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.contact-img {
-    max-width: 100%; /* Ensure image is responsive */
-    height: auto; /* Maintain aspect ratio */
-    margin-left: 150px;
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.15);
+    outline: none;
+}
+
+/* Contact Info Styling - Updated for the color switch */
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 4, 53, 0.1);
+    padding-bottom: 15px;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item i {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-right: 20px;
+    width: 40px;
+}
+
+.info-details h3 {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.info-details p {
+    color: var(--dark-color);
+    font-size: 1rem;
+}
+
+/* Update link colors in the info card */
+.info-card a {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.info-card a:hover {
+    color: var(--primary-color);
+}
+
+/* Card Headers */
+.contact-card h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.contact-card h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .contact-content {
+        flex-direction: column;
+    }
+
+    .contact-card {
+        width: 100%;
+    }
+    
+    .info-card {
+        padding-left: 40px; /* Less padding on smaller screens */
+    }
+    
+    .contact-info-items {
+        padding-left: 20px; /* Less padding on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        background: var(--light-color);
+        padding: 40px 0;
+    }
+
+    .contact-card {
+        padding: 30px;
+    }
+
+    .contact-card h2 {
+        font-size: 1.8rem;
+    }
 }
 
 /* Page Header - Centered Text with Reduced Height */
