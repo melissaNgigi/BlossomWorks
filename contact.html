@@ -66,7 +66,7 @@
     <section class="contact-section">
         <div class="contact-content">
             <!-- Contact Form Card -->
-            <div class="contact-card form-card">
+            <div class="contact-card form-card" data-aos="fade-right" data-aos-duration="800">
                 <h2>Send us a Message</h2>
                 <form id="contactForm">
                     <div class="form-group">
@@ -86,7 +86,7 @@
             </div>
 
             <!-- Contact Info Card -->
-            <div class="contact-card info-card">
+            <div class="contact-card info-card" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                 <h2>Get in Touch</h2>
                 <div class="contact-info-items">
                     <div class="info-item">
@@ -107,7 +107,7 @@
                         <a href="https://www.linkedin.com/company/blossomworks-company-limited"><i class="fab fa-linkedin"></i></a>
                         <div class="info-details">
                             <a href="https://www.linkedin.com/company/blossomworks-company-limited"><h3>LinkedIn</h3></a>
-                            <a href="https://www.linkedin.com/company/blossomworks-company-limited"><p>@blossomworks</p></a>
+                            <a href="https://www.linkedin.com/company/blossomworks-company-limited"><p>@blossomworks company limited</p></a>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                    
                     <p><i class="fas fa-phone"></i> +254736 487062</p>
                     <p><i class="fas fa-envelope"></i> info@blossomworks.com</p>
-                    <p><i class="fab fa-linkedin"></i> @blossomworks</p>
+                    <p><i class="fab fa-linkedin"></i> @blossomworks company limited</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -191,6 +191,13 @@
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
                 body.classList.remove('no-scroll');
+            });
+        });
+
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                once: true // Whether animation should happen only once - while scrolling down
             });
         });
     </script>
