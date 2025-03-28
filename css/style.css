@@ -181,16 +181,16 @@ a:hover {
 }
 
 .logo {
-    margin-left: 10px; /* Reset margin */
+    margin-left: -15px;
     position: relative;
 }
 
 .logo img {
-    height: 70px; /* Reduce from 110px */
+    height: 70px;
     width: auto;
     position: absolute;
-    top: -40px; /* Adjust from -50px */
-    left: -30px; /* Adjust from -60px */
+    top: -40px; /* Adjust this value to position the logo vertically */
+    left: 10px;
 }
 
 .nav-links ul {
@@ -247,10 +247,6 @@ a:hover {
 }
 
 @media screen and (max-width: 768px) {
-    .logo{
-        top: -10px;
-        margin-left: 30px;
-    }
     .hamburger {
         display: block;
         margin-right: 10px;
@@ -369,15 +365,15 @@ a:hover {
 }
 
 .carousel-slide:nth-child(1) {
-    background-image: url('../images/hero1.jpg');
+    background-image: url('../images/hero3.jpeg');
 }
 
 .carousel-slide:nth-child(2) {
-    background-image: url('../images/hero2.jpg');
+    background-image: url('../images/hero1.jpg');
 }
 
 .carousel-slide:nth-child(3) {
-    background-image: url('../images/hero3.jpeg');
+    background-image: url('../images/hero2.jpg');
 }
 
 /* Ensure content stays above overlay */
@@ -832,104 +828,84 @@ footer {
 
 /* About Section */
 .about-section {
-    position: relative; /* Keep position relative */
-    padding: 50px 0; /* Add padding for spacing */
-    margin-bottom: 50px; /* Add margin to separate from the next section */
-    height: auto; /* Allow height to adjust based on content */
+    position: relative;
+    padding: 50px 0;
+    margin-bottom: 50px;
+    height: auto;
 }
 
-/* Adjust About Content */
 .about-content {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    flex-direction: column; /* Stack image and text on mobile */
-    margin-top: 20px; /* Adjust margin */
-    gap: 20px; /* Space between elements */
+    display: flex;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    margin-bottom: 100px;
+    margin-right: 100px;
 }
 
-/* About Image */
 .about-image {
-    flex: 1; /* Allow the image to take up space */
-    position: relative; /* Position relative for the image */
-    width: 100%; /* Full width on mobile */
+    flex: 0 0 60%;
+    position: relative;
+    z-index: 1;
 }
 
-/* About Text */
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 .about-text {
-    position: relative; /* Ensure it is positioned correctly */
-    width: 90%; /* Ensure it takes up a good width */
-    margin: 0 auto; /* Center the text */
-    padding: 20px; /* Add padding for spacing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-    z-index: 10; /* Ensure it appears above other elements */
-    height: auto; /* Allow height to adjust based on content */
-    overflow: visible; /* Ensure overflow is visible */
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .about-section {
-        padding: 20px 0; /* Adjust padding for mobile */
-       
-        height: 300px; 
-    }
-
-    .about-content {
-        flex-direction: column; /* Stack image and text */
-        margin-top: 50px; /* Adjust margin */
-        gap: 20px; /* Space between elements */
-    }
-
-    .about-image img {
-        width: 80%; /* Adjust image size */
-        height: auto; /* Maintain aspect ratio */
-    }
-
-    .about-text {
-        width: 90%; /* Full width */
-        margin: 0 auto; /* Center text */
-        padding: 20px; /* Add padding */
-    }
+    flex: 0 0 70%;
+    padding: 40px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-left: -60px; /* This creates the overlap effect */
+    position: relative;
+    z-index: 2;
+    top: 100px;
+    width: 100%;
 }
 
 .about-text h2 {
-    color: var(--secondary-color); /* Heading color */
-    margin-bottom: 10px; /* Space below the heading */
-    position: relative; /* Position relative for the pseudo-element */
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    position: relative;
 }
 
 .about-text h2::after {
-    content: ''; /* Create an empty content for the line */
-    display: block; /* Make it a block element */
-    width: 50px; /* Set the width of the line */
-    height: 3px; /* Set the height of the line */
-    background-color: var(--primary-color); /* Use the primary color */
-    margin-top: 10px; /* Space between the heading and the line */
-    left: 0; /* Align to the left */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin-top: 15px;
 }
 
 .about-text p {
-    color: var(--dark-color); /* Text color */
-    font-size: 16px; /* Adjust font size */
-    line-height: 1.5; /* Line height for readability */
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--dark-color);
+    margin-bottom: 25px;
 }
 
 .learn-more {
-    display: inline-flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
-    color: var(--secondary-color); /* Use primary color for the text */
-    font-weight: bold; /* Make the text bold */
-    margin-top: 15px; /* Space above the link */
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .learn-more i {
-    margin-left: 5px; /* Space between text and icon */
-    transition: transform 0.3s ease; /* Add transition for hover effect */
+    margin-left: 8px;
+    transition: transform 0.3s ease;
     color: var(--primary-color);
-}
-
-.learn-more:hover i {
-    transform: translateX(5px); /* Move the arrow slightly on hover */
 }
 
 /* Services Overview */
@@ -995,15 +971,23 @@ footer {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    background-color: var(--secondary-color);
+    padding: 15px;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.1);
     z-index: 1002;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .floating-contacts .icon-wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    padding: 10px 0;
+}
+
+.floating-contacts .icon-wrapper:last-child {
+    border-bottom: none;
 }
 
 /* Styling the icons */
@@ -1011,32 +995,27 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
-    background-color: var(--light-color, #e48489);
-    color: var(--secondary-color, #fff);
-    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    color: var(--light-color);
     transition: all 0.3s ease;
-    border: 1px solid var(--secondary-color);
 }
 
 /* Increase the icon size within the container */
 .floating-contacts a i {
-    font-size: 24px; /* Increase from default size */
+    font-size: 20px;
 }
 
 /* Tooltip Styling */
 .floating-contacts .contact-info {
     position: absolute;
-    top: 50%;
-    left: -200px;
-    transform: translateY(-50%);
-    background-color: var(--light-color, #e48489);
-    color: var(--secondary-color, #fff);
+    right: 50px;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
     padding: 8px 12px;
     border-radius: 4px;
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 14px;
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease;
@@ -1050,33 +1029,28 @@ footer {
     top: 50%;
     right: -6px;
     transform: translateY(-50%);
-    border-width: 6px 0 6px 8px;
+    border-width: 6px 0 6px 6px;
     border-style: solid;
-    border-color: transparent transparent transparent var(--light-color, #e48489);
+    border-color: transparent transparent transparent var(--secondary-color);
 }
 
 /* Show info ONLY on hover */
 .floating-contacts .icon-wrapper:hover .contact-info {
     visibility: visible;
     opacity: 1;
-    left: -150px; /* Adjust this to control the distance from the icon */
+    right: 60px;
 }
 
 /* Hover effect for icons */
 .floating-contacts a:hover {
-    background-color: var(--primary-color, #000435);
+    color: var(--primary-color);
     transform: scale(1.1);
 }
 
-/* Mobile Navigation Styles */
+/* Mobile styles */
 @media screen and (max-width: 768px) {
     .floating-contacts {
-        display: none; /* Hide floating icons on mobile */
-    }
-    
-    .contact-info {
-        width: 100%;
-        justify-content: center;
+        display: none;
     }
 }
 
@@ -1095,7 +1069,7 @@ footer {
     grid-template-columns: 1fr auto 1fr; /* Two equal columns + center vertical line */
     align-items: center;
     gap: 40px; /* Adjust spacing between elements */
-    margin-top: -30px;
+    margin-top: -20px;
     margin-bottom: 30px;
 }
 
@@ -1105,13 +1079,18 @@ footer {
     border-radius: 10px;
     text-align: center;
     width: 80%; /* Adjust width for mobile */
-    max-width: 300px; /* Set a maximum width */
+    max-width: 500px; /* Set a maximum width */
     position: relative;
     z-index: 2;
     background: var(--light-color);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     height: auto; /* Allow height to adjust based on content */
     overflow: hidden; /* Prevent overflow */
+    font-size: 22px;
+}
+
+.approach-card p {
+    font-size: 18px;
 }
 
 .approach-card:hover {
@@ -1132,6 +1111,7 @@ footer {
 .left {
     justify-self: end; /* Aligns to the right */
     margin-right: 50px; /* Additional space from the line */
+    margin-bottom: -30px;
 }
 
 .right {
@@ -1199,7 +1179,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    width: 60%;
+    width: 80%;
     margin: 20px auto;
 }
 
@@ -1219,7 +1199,7 @@ footer {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 30px 30px 30px 30px rgba(0, 0, 0, 0.2);
 }
 
 .service-icon {
@@ -1231,7 +1211,7 @@ footer {
 .service-card h3 {
     color: var(--secondary-color);
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .service-card p {
@@ -1239,6 +1219,12 @@ footer {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 0;
+}
+
+.service-card i {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
 }
 
 /* View All Services button styles */
@@ -1278,50 +1264,22 @@ footer {
 
 /* About Section Responsive Styles */
 @media screen and (max-width: 768px) {
-    .about-section {
-        padding: 20px 0; /* Adjust padding */
-        height: auto; /* Ensure height is auto */
-    }
-
     .about-content {
-        flex-direction: column; /* Stack image and text */
-        margin-top: 20px; /* Adjust margin */
-        gap: 20px; /* Space between elements */
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 20px;
     }
 
     .about-image {
-        order: 1; /* Image first */
-        width: 100%; /* Full width */
-        display: flex;
-        justify-content: center;
-    }
-
-    .about-image img {
-        width: 80%; /* Adjust image size */
-        height: auto; /* Maintain aspect ratio */
+        order: 1;
+        width: 100%;
     }
 
     .about-text {
-        order: 2; /* Text second */
-        position: relative; /* Reset position */
-        width: 90%; /* Full width */
-        margin: 0 auto; /* Center text */
-        padding: 20px; /* Add padding */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
-        z-index: 10; /* Ensure it appears above */
-        height: auto; /* Allow height to adjust */
-        overflow: visible; /* Ensure overflow is visible */
-    }
-
-    .about-text h2 {
-        font-size: 1.8rem; /* Adjust heading size */
-        margin-bottom: 15px; /* Space below heading */
-    }
-
-    .about-text p {
-        font-size: 1rem; /* Adjust paragraph size */
-        line-height: 1.5; /* Improve readability */
-        margin-bottom: 15px; /* Space below paragraph */
+        order: 2;
+        width: 100%;
+        margin-left: 0; /* Remove overlap on mobile */
+        padding: 20px;
     }
 }
 
@@ -2321,13 +2279,12 @@ footer {
     }
 } 
 
+/* Approach Section - Desktop Styles */
 .approach-section {
     display: flex;
     justify-content: center;
     background-color: var(--light-accent);
-    min-height: 80vh; /* Reduce from 100vh */
-    overflow: hidden;
-    padding-bottom: 0; /* Remove bottom padding */
+    min-height: 100vh;
 }
 
 .approach-container {
@@ -2336,49 +2293,44 @@ footer {
     display: grid;
     gap: 20px;
     align-items: center;
-    padding-bottom: 0; /* Remove bottom padding */
-    margin-bottom: -50px; /* Add negative margin to pull up content below */
 }
 
-/* Adjust the line height */
+/* Vertical line */
 .approach-container::before {
     content: '';
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: 10%;
-    bottom: 15%; /* Adjust bottom to match new container height */
+    bottom: 10%;
     width: 2px;
     background-color: #000435;
     z-index: 1;
 }
 
+/* Card styling */
 .approach-card {
-    padding: 20px; /* Ensure there's padding inside the card */
+    padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: 80%; /* Adjust width for mobile */
-    max-width: 300px; /* Set a maximum width */
+    width: 800px; /* Increased width from 300px to 500px */
     position: relative;
     z-index: 2;
     background: var(--light-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    height: auto; /* Allow height to adjust based on content */
-    overflow: hidden; /* Prevent overflow */
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.1);
+    height: auto; /* Allow height to adjust based on text content */
+    overflow-wrap: break-word; /* Ensures text breaks to fit within the card */
 }
 
-.approach-card:hover {
-    transform: scale(1.03); /* Subtle hover effect */
-}
-
+/* Position cards */
 .approach-card.left {
-    margin-right: 700px; /* Reduced margin to prevent overlap */
-    margin-left: auto; /* Push card to the right */
+    margin-right: 600px; /* Adjusted margin to maintain alignment */
+    margin-left: auto;
 }
 
 .approach-card.right {
-    margin-left: 700px; /* Reduced margin to prevent overlap */
-    margin-right: auto; /* Push card to the left */
+    margin-left: 600px; /* Adjusted margin to maintain alignment */
+    margin-right: auto;
 }
 
 .card-icon {
@@ -2397,6 +2349,56 @@ footer {
     opacity: 1;
     transition: transform 0.1s ease-out;
     pointer-events: none;
+}
+
+/* Ensure text fits within cards */
+.approach-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.approach-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .approach-section {
+        min-height: auto;
+        padding: 40px 0;
+    }
+
+    .approach-container::before {
+        display: none;
+    }
+
+    .approach-card {
+        width: 80%;
+        height: auto;
+        margin: 10px auto;
+    }
+
+    .approach-card.left,
+    .approach-card.right {
+        margin: 10px auto;
+    }
+
+    .asterisk {
+        display: none;
+    }
+}
+
+/* Tablet Responsive Styles */
+@media (max-width: 1200px) and (min-width: 769px) {
+    .approach-card.left {
+        margin-right: 500px;
+    }
+
+    .approach-card.right {
+        margin-left: 500px;
+    }
 }
 
 /* Professional Training Programs Section */
@@ -2706,16 +2708,59 @@ footer {
 
 @media (max-width: 768px) {
     .vision-section {
-        height: auto;
-        min-height: 500px;
+        height: 500px;
+        position: relative;
+    }
+
+    .vision-image {
+        height: 100%;
+        position: relative;
+    }
+
+    .vision-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 4, 53, 0.7);
+    }
+
+    .vision-text {
+        position: absolute; /* Change back to absolute */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Center perfectly */
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        width: 90%;
+        border-bottom: none;
+    }
+
+    .vision-text h2, 
+    .vision-text p {
+        width: 100%;
+        text-align: center;
     }
 
     .vision-text h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .vision-text h2::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: #e48489;
+        margin: 10px auto; /* Center the line */
     }
 
     .vision-text p {
         font-size: 1rem;
+        line-height: 1.5;
     }
 }
 
@@ -2816,25 +2861,27 @@ footer {
 @media (max-width: 768px) {
     .approach-section {
         min-height: auto;
-        padding: 40px 0;
+        padding: 40px 0 20px; /* Reduced bottom padding */
     }
 
     .approach-container::before {
-        display: none; /* Hide vertical line on mobile */
+        display: none;
     }
 
     .approach-card {
-        width: 90%; /* Make cards wider on mobile */
-        padding: 15px; /* Adjust padding */
+        width: 90%;
+        padding: 15px;
+        margin-bottom: 20px; /* Reduced margin between cards */
     }
 
     .approach-card.left,
     .approach-card.right {
-        margin: 10px auto; /* Center cards with reduced margin */
-        margin-bottom: 30px;
+        margin: 10px auto;
         width: 80%;
     }
 
+    .approach-content {
+        padding-bottom: 0; /* Remove bottom padding */
     .asterisk {
         display: none; /* Hide asterisk on mobile */
     }
@@ -2950,15 +2997,6 @@ footer {
 /* Add this to your existing CSS */
 body.no-scroll {
     overflow: hidden;
-}
-
-/* Responsive logo adjustments */
-@media screen and (max-width: 768px) {
-    .logo img {
-        height: 60px; /* Even smaller on mobile */
-        top: -20px; /* Adjust position for mobile */
-        left: -20px;
-    }
 }
 
 
