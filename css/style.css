@@ -958,81 +958,83 @@ footer {
 
 /* Floating Contact Icons */
 .floating-contacts {
-    position: static; /* Change from fixed to static */
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
-    flex-direction: row; /* Keep horizontal layout */
-    gap: 20px;
-    padding: 20px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
     z-index: 1002;
-    justify-content: center; /* Center the icons horizontally */
-    margin-top: 30px; /* Add space from content above */
 }
 
-.icon-container {
+.floating-contacts .icon-wrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-/* Style for the icons */
+/* Styling the icons */
 .floating-contacts a {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 70px;
     height: 70px;
-    background-color: var(--light-color);
-    color: var(--secondary-color);
-    border-radius: 0;
+    background-color: var(--light-color, #e48489);
+    color: var(--secondary-color, #fff);
+    border-radius: 10px;
     transition: all 0.3s ease;
     border: 1px solid var(--secondary-color);
 }
 
-/* Update tooltip positioning for static layout */
-.floating-contacts .tooltip {
+/* Increase the icon size within the container */
+.floating-contacts a i {
+    font-size: 24px; /* Increase from default size */
+}
+
+/* Tooltip Styling */
+.floating-contacts .contact-info {
     position: absolute;
-    bottom: -40px; /* Position below the icon */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--secondary-color);
-    color: var(--light-color);
+    top: 50%;
+    left: -200px;
+    transform: translateY(-50%);
+    background-color: var(--light-color, #e48489);
+    color: var(--secondary-color, #fff);
     padding: 8px 12px;
     border-radius: 4px;
-    font-size: 14px;
     white-space: nowrap;
-    opacity: 0;
+    font-size: 20px;
     visibility: hidden;
+    opacity: 0;
     transition: all 0.3s ease;
+    pointer-events: none;
 }
 
-/* Update tooltip arrow for bottom position */
-.floating-contacts .tooltip::after {
+/* Tooltip Arrow */
+.floating-contacts .contact-info::after {
     content: '';
     position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 6px 6px 6px;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 8px;
     border-style: solid;
-    border-color: transparent transparent var(--secondary-color) transparent;
+    border-color: transparent transparent transparent var(--light-color, #e48489);
 }
 
-/* Show tooltip on hover */
-.icon-container:hover .tooltip {
-    opacity: 1;
+/* Show info ONLY on hover */
+.floating-contacts .icon-wrapper:hover .contact-info {
     visibility: visible;
+    opacity: 1;
+    left: -150px; /* Adjust this to control the distance from the icon */
 }
 
 /* Hover effect for icons */
 .floating-contacts a:hover {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
+    background-color: var(--primary-color, #000435);
     transform: scale(1.1);
-}
-
-/* Increase icon size */
-.floating-contacts a i {
-    font-size: 28px;
 }
 
 /* Mobile Navigation Styles */
