@@ -181,16 +181,16 @@ a:hover {
 }
 
 .logo {
-    margin-left: -15px;
+    margin-left: 10px; /* Reset margin */
     position: relative;
 }
 
 .logo img {
-    height: 110px;
+    height: 70px; /* Reduce from 110px */
     width: auto;
     position: absolute;
-    top: -50px; /* Adjust this value to position the logo vertically */
-    left: -60px;
+    top: -40px; /* Adjust from -50px */
+    left: -30px; /* Adjust from -60px */
 }
 
 .nav-links ul {
@@ -247,6 +247,10 @@ a:hover {
 }
 
 @media screen and (max-width: 768px) {
+    .logo{
+        top: -10px;
+        margin-left: 30px;
+    }
     .hamburger {
         display: block;
         margin-right: 10px;
@@ -746,10 +750,12 @@ footer {
 
 /* Mission & Vision Cards Section */
 .mission-vision-cards {
+    position: relative;
     background-color: var(--light-color);
     padding: 80px 0;
     color: var(--light-color);
-    margin-top: -300px;
+    margin-top: -100px; /* Reduce negative margin */
+    z-index: 1; /* Lower z-index than about section */
 }
 
 .cards-container {
@@ -826,39 +832,64 @@ footer {
 
 /* About Section */
 .about-section {
-    position: relative; /* Position relative for absolute positioning of text */
+    position: relative; /* Keep position relative */
     padding: 50px 0; /* Add padding for spacing */
-    height: 800px;
+    margin-bottom: 50px; /* Add margin to separate from the next section */
+    height: auto; /* Allow height to adjust based on content */
 }
 
+/* Adjust About Content */
 .about-content {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
-    position: relative; /* Position relative for child elements */
-    margin-top: 70px;
+    flex-direction: column; /* Stack image and text on mobile */
+    margin-top: 20px; /* Adjust margin */
+    gap: 20px; /* Space between elements */
 }
 
+/* About Image */
 .about-image {
     flex: 1; /* Allow the image to take up space */
     position: relative; /* Position relative for the image */
+    width: 100%; /* Full width on mobile */
 }
 
-.about-image img {
-    width: 50%; /* Make the image smaller */
-    border-radius: 10px; /* Optional: Add border radius */
-}
-
+/* About Text */
 .about-text {
-    position: absolute; /* Position absolute to overlap the image */
-    top: 70%; /* Adjust as needed */
-    left: 40%; /* Adjust as needed */
-    background-color: rgba(255, 255, 255);
-    padding: 20px; /* Add padding */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
-    z-index: 10; /* Ensure it appears above the image */
-    width: 70%; /* Make the text card larger */
-    height: 300px;
+    position: relative; /* Ensure it is positioned correctly */
+    width: 90%; /* Ensure it takes up a good width */
+    margin: 0 auto; /* Center the text */
+    padding: 20px; /* Add padding for spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    z-index: 10; /* Ensure it appears above other elements */
+    height: auto; /* Allow height to adjust based on content */
+    overflow: visible; /* Ensure overflow is visible */
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .about-section {
+        padding: 20px 0; /* Adjust padding for mobile */
+       
+        height: 300px; 
+    }
+
+    .about-content {
+        flex-direction: column; /* Stack image and text */
+        margin-top: 50px; /* Adjust margin */
+        gap: 20px; /* Space between elements */
+    }
+
+    .about-image img {
+        width: 80%; /* Adjust image size */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .about-text {
+        width: 90%; /* Full width */
+        margin: 0 auto; /* Center text */
+        padding: 20px; /* Add padding */
+    }
 }
 
 .about-text h2 {
@@ -1070,16 +1101,17 @@ footer {
 
 /* Style for each approach card */
 .approach-card {
-    padding: 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    max-width: 100%;
-    min-width: 500px; /* Wider minimum width */
+    padding: 20px; /* Ensure there's padding inside the card */
+    border-radius: 10px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: transform 0.3s ease; /* Smooth hover effect */
+    width: 80%; /* Adjust width for mobile */
+    max-width: 300px; /* Set a maximum width */
+    position: relative;
+    z-index: 2;
+    background: var(--light-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: auto; /* Allow height to adjust based on content */
+    overflow: hidden; /* Prevent overflow */
 }
 
 .approach-card:hover {
@@ -1245,49 +1277,63 @@ footer {
 }
 
 /* About Section Responsive Styles */
-@media screen and (max-width: 992px) {
-    .about-content {
-        gap: 50px;
-    }
-}
-
 @media screen and (max-width: 768px) {
+    .about-section {
+        padding: 20px 0; /* Adjust padding */
+        height: auto; /* Ensure height is auto */
+    }
+
     .about-content {
-        flex-direction: column;
-        gap: 30px;
+        flex-direction: column; /* Stack image and text */
+        margin-top: 20px; /* Adjust margin */
+        gap: 20px; /* Space between elements */
     }
 
     .about-image {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .about-text {
-        top: 10%; /* Adjust for smaller screens */
-        left: 5%; /* Adjust for smaller screens */
-        width: 90%; /* Make it wider on smaller screens */
-    }
-
-    .about-text h2 {
-        font-size: 2rem;
-    }
-
-    .about-text p {
-        font-size: 1.1rem;
+        order: 1; /* Image first */
+        width: 100%; /* Full width */
+        display: flex;
+        justify-content: center;
     }
 
     .about-image img {
-        width: 50%; /* Adjust image size for smaller screens */
+        width: 80%; /* Adjust image size */
+        height: auto; /* Maintain aspect ratio */
     }
-}
 
-@media screen and (max-width: 480px) {
-    .about-section {
-        padding: 60px 0;
+    .about-text {
+        order: 2; /* Text second */
+        position: relative; /* Reset position */
+        width: 90%; /* Full width */
+        margin: 0 auto; /* Center text */
+        padding: 20px; /* Add padding */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+        z-index: 10; /* Ensure it appears above */
+        height: auto; /* Allow height to adjust */
+        overflow: visible; /* Ensure overflow is visible */
     }
 
     .about-text h2 {
-        font-size: 1.8rem;
+        font-size: 1.8rem; /* Adjust heading size */
+        margin-bottom: 15px; /* Space below heading */
+    }
+
+    .about-text p {
+        font-size: 1rem; /* Adjust paragraph size */
+        line-height: 1.5; /* Improve readability */
+        margin-bottom: 15px; /* Space below paragraph */
+    }
+}
+
+/* Additional adjustments for smaller screens */
+@media screen and (max-width: 480px) {
+    .about-image img {
+        width: 90%; /* Make image slightly wider on very small screens */
+    }
+
+    .about-text {
+        width: 95%;
+        padding: 20px 15px;
     }
 }
 
@@ -2308,15 +2354,21 @@ footer {
 }
 
 .approach-card {
-    padding: 20px;
+    padding: 20px; /* Ensure there's padding inside the card */
     border-radius: 10px;
     text-align: center;
-    width: 300px;
+    width: 80%; /* Adjust width for mobile */
+    max-width: 300px; /* Set a maximum width */
     position: relative;
     z-index: 2;
     background: var(--light-color);
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.1);
-    height: 160px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: auto; /* Allow height to adjust based on content */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.approach-card:hover {
+    transform: scale(1.03); /* Subtle hover effect */
 }
 
 .approach-card.left {
@@ -2761,26 +2813,6 @@ footer {
 }
 
 /* Approach Section Responsive */
-@media (max-width: 1200px) {
-    .approach-card.left {
-        margin-right: 500px;
-    }
-
-    .approach-card.right {
-        margin-left: 500px;
-    }
-}
-
-@media (max-width: 992px) {
-    .approach-card.left {
-        margin-right: 300px;
-    }
-
-    .approach-card.right {
-        margin-left: 300px;
-    }
-}
-
 @media (max-width: 768px) {
     .approach-section {
         min-height: auto;
@@ -2792,13 +2824,15 @@ footer {
     }
 
     .approach-card {
-        width: 90%;
-        margin: 0 auto !important;
+        width: 90%; /* Make cards wider on mobile */
+        padding: 15px; /* Adjust padding */
     }
 
     .approach-card.left,
     .approach-card.right {
-        margin: 20px auto !important;
+        margin: 10px auto; /* Center cards with reduced margin */
+        margin-bottom: 30px;
+        width: 80%;
     }
 
     .asterisk {
@@ -2860,6 +2894,70 @@ footer {
     
     .footer-contact p {
         justify-content: center;
+    }
+}
+
+/* About Text Section */
+.about-text-section {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    margin-bottom: 150px; /* Add space below about text */
+}
+
+/* Mission Vision Cards Section */
+.mission-vision-cards {
+    position: relative;
+    background-color: var(--light-color);
+    padding: 80px 0;
+    color: var(--light-color);
+    margin-top: -100px; /* Reduce negative margin */
+    z-index: 1; /* Lower z-index than about section */
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .about-text-section {
+        width: 90%;
+        padding: 30px 20px;
+        margin-bottom: 100px; /* Adjust space for mobile */
+    }
+
+    .mission-vision-cards {
+        margin-top: -50px; /* Reduce negative margin on mobile */
+        padding-top: 60px;
+    }
+
+    .cards-container {
+        padding-top: 30px;
+    }
+
+    /* Ensure cards don't overlap */
+    .vision-card, 
+    .mission-card {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 30px;
+    }
+}
+
+/* Add this to your existing CSS */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Responsive logo adjustments */
+@media screen and (max-width: 768px) {
+    .logo img {
+        height: 60px; /* Even smaller on mobile */
+        top: -20px; /* Adjust position for mobile */
+        left: -20px;
     }
 }
 

@@ -136,5 +136,43 @@
     
     <!-- Custom JS -->
     <script src="js/main.js"></script>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        // Burger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        hamburger.addEventListener('click', () => {
+            // Toggle active class on hamburger
+            hamburger.classList.toggle('active');
+            
+            // Toggle active class on nav links
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            body.classList.toggle('no-scroll');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.classList.remove('no-scroll');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+        });
+    </script>
 </body>
 </html> 
