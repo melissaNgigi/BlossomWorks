@@ -32,8 +32,14 @@
     /* Adjust navbar position since contact bar is hidden */
     .navbar {
         top: 0;
-        height: 70px; /* Slightly smaller height for mobile */
+        height: 90px; /* Slightly smaller height for mobile */
         background-color: var(--light-color); /* Solid navy blue */
+        box-shadow: ;
+    }
+
+    .logo img {
+        height: 60px; /* You may want to adjust logo size proportionally */
+        margin-right: 30px;
     }
 
     /* Adjust hero carousel margin and height */

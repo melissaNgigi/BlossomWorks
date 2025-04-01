@@ -164,11 +164,11 @@ a:hover {
 /* Navigation */
 .navbar {
     position: fixed;
-    top: 0; /* Ensure it is at the very top */
+    top: 0;
     left: 0;
     width: 100%;
-    height: 120px; /* Increased from 120px */
-    background-color: var(--light-color); /* Set background to white */
+    height: 120px; /* Desktop height */
+    background-color: var(--light-color);
     transition: all 0.3s ease;
     z-index: 1000;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -320,7 +320,12 @@ a:hover {
     }
     
     .navbar {
-        height: 110px; /* Adjusted for mobile */
+        height: 110px; /* Adjust this value to change mobile navbar height */
+    }
+    
+    .logo img {
+        height: 60px; /* You may want to adjust logo size proportionally */
+        margin-right: 20px;
     }
 }
 
@@ -1300,32 +1305,58 @@ footer {
 @media screen and (max-width: 768px) {
     .about-content {
         flex-direction: column;
-        margin-top: 20px;
+        margin: 20px;
         gap: 20px;
+        margin-right: 0;
     }
 
     .about-image {
-        order: 1;
+        flex: 1;
         width: 100%;
+        margin-right: 0;
     }
 
     .about-text {
-        order: 2;
-        width: 100%;
-        margin-left: 0; /* Remove overlap on mobile */
+        flex: 1;
+        margin-left: 0;
         padding: 20px;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .about-text h2::after {
+        margin: 15px auto; /* Center the underline */
+    }
+
+    .about-text p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .learn-more {
+        display: flex;
+        justify-content: center;
     }
 }
 
-/* Additional adjustments for smaller screens */
+/* Additional adjustments for very small screens */
 @media screen and (max-width: 480px) {
-    .about-image img {
-        width: 90%; /* Make image slightly wider on very small screens */
+    .about-content {
+        margin: 10px;
     }
 
     .about-text {
-        width: 95%;
-        padding: 20px 15px;
+        padding: 15px;
+    }
+
+    .about-text h2 {
+        font-size: 1.8rem;
     }
 }
 
@@ -1719,6 +1750,7 @@ footer {
 
     .navbar {
         top: 0; /* Adjust navbar position since contact bar is hidden */
+        height: 130px; /* Adjusted for mobile */
     }
 
     .nav-links {
@@ -3311,7 +3343,9 @@ body.no-scroll {
 @media (max-width: 992px) {
     .contact-content {
         flex-direction: column;
-        gap: 30px;
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
     }
 
     .contact-card {
@@ -3323,54 +3357,83 @@ body.no-scroll {
     .form-card, .info-card {
         margin-left: 0;
         margin-right: 0;
+        top: 0;
         z-index: 1;
         flex: none;
         padding: 30px;
+        width: 100%;
     }
 
     /* Adjust the background for mobile */
     .contact-section {
-        background: var(--light-color); /* Single color background on mobile */
-        padding: 40px 0;
+        background: linear-gradient(45deg, #000435, #e48489);
+        padding: 40px 20px;
     }
 
-    /* Ensure the cards have proper spacing and shadows */
+    /* Center the form inputs on mobile */
+    .form-group {
+        width: 100%;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        font-size: 16px; /* Better size for mobile inputs */
+    }
+
+    /* Adjust info card styling */
     .info-card {
+        padding-left: 30px;
         margin-top: 20px;
     }
 
-    /* Adjust content padding */
-    .contact-info-items {
-        padding-left: 0;
+    .info-item {
+        justify-content: flex-start;
+        padding-right: 15px;
     }
 
-    /* Make form inputs more mobile-friendly */
-    .form-group input, 
-    .form-group textarea {
-        padding: 12px 0;
-        font-size: 16px;
-    }
-
-    /* Adjust heading sizes */
+    /* Make headings more mobile-friendly */
     .contact-card h2 {
         font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .contact-card h2::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
 /* Additional adjustments for smaller screens */
 @media (max-width: 480px) {
+    .contact-section {
+        padding: 30px 15px;
+    }
+
     .contact-content {
-        padding: 0 15px;
+        padding: 10px;
     }
 
     .contact-card {
-        padding: 25px 20px;
+        padding: 20px;
+    }
+
+    /* Adjust info items for better mobile display */
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 0;
     }
 
     .info-item i {
-        font-size: 20px;
-        margin-right: 15px;
-        width: 30px;
+        font-size: 24px;
+        margin: 0 0 10px 0;
+        width: auto;
+    }
+
+    .info-details {
+        width: 100%;
+        text-align: center;
     }
 
     .info-details h3 {
@@ -3379,6 +3442,21 @@ body.no-scroll {
 
     .info-details p {
         font-size: 0.9rem;
+    }
+
+    /* Adjust form elements */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px 0;
+    }
+
+    .btn-primary {
+        width: 100%; /* Full width button on mobile */
+        padding: 12px 20px;
     }
 }
 
