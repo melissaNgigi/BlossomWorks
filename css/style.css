@@ -476,15 +476,32 @@ a:hover {
 /* Hero Carousel Navigation */
 .carousel-navigation {
     position: absolute;
-    top: 50%; /* Center vertically */
-    left: 0; /* Position on the left */
-    right: 0; /* Position on the right */
+    width: 200px; /* Reduced width to keep arrows closer together */
+    bottom: 30px; /* Position at bottom instead of middle */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     display: flex;
-    justify-content: space-between; /* Space arrows to the sides */
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.prev-btn, .next-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
     align-items: center;
-    opacity: 0; /* Hide arrows by default */
-    transition: opacity 0.3s ease; /* Smooth transition */
-    z-index: 10; /* Ensure arrows are above other content */
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Show arrows on hover */
@@ -508,20 +525,6 @@ a:hover {
 
 .dot.active {
     background-color: var(--primary-color);
-}
-
-.prev-btn, .next-btn {
-    background: none;
-    border: none;
-    color: var(--light-color);
-    font-size: 2rem; /* Adjust size as needed */
-    cursor: pointer;
-    padding: 10px;
-}
-
-/* Optional: Add some styling for the arrows */
-.prev-btn:hover, .next-btn:hover {
-    color: var(--primary-color); /* Change color on hover */
 }
 
 /* Clientele Section */
