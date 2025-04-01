@@ -230,6 +230,7 @@ a:hover {
     font-weight: 600; /* Made slightly bolder for better visibility */
     position: relative;
     font-size: 1.2rem;
+    padding: 10px;
 }
 
 .nav-links ul li a:hover {
@@ -2015,8 +2016,6 @@ footer {
         flex: 0 0 200px;
         width: 100%;
     }
-    .course-content a{
-        width: 180px;
 }
 
 @media (max-width: 768px) {
@@ -3281,7 +3280,7 @@ body.no-scroll {
     opacity: 1;
 }
 
-
+/
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .course-image {
@@ -3492,5 +3491,5 @@ body.no-scroll {
     color: var(--dark-color);
     font-size: 1rem;
 }
-}
-}
+
+
