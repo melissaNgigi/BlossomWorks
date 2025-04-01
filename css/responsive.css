@@ -34,7 +34,7 @@
         top: 0;
         height: 90px; /* Slightly smaller height for mobile */
         background-color: var(--light-color); /* Solid navy blue */
-        box-shadow: ;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
     .logo img {
